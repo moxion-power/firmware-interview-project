@@ -16,6 +16,9 @@ void run_test_demo_code(VoltageSensorInterface& temp_sensor_raw,
                         PwmOutputInterface& fan_output_raw) 
 {
     /** TODO: instantiate and initialize FanController **/
+    
+    auto fan_controller = FanController(temp_sensor_raw, sensor_power_enable, fan_relay_enable, fan_output_raw);
+    fan_controller.init();
 
     std::chrono::minutes loopDuration(1);
     auto startTime = std::chrono::steady_clock::now();
@@ -28,9 +31,8 @@ void run_test_demo_code(VoltageSensorInterface& temp_sensor_raw,
         }
 
     
-        /** TODO: call FanController.loop(); **/
-     
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));  
+       fan_controller.loop();
+       std::this_thread::sleep_for(std::chrono::milliseconds(500));  
     }
 
 }
