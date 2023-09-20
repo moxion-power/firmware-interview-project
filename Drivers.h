@@ -10,7 +10,7 @@ public:
    * @brief Get the most recent voltage measurement
    * @return Latest voltage measurement [0 12]
    */
-  virtual float getVoltage() { return 0.0f; };
+  virtual float getVoltage() { return 4.0f; };
 };
 
 /**
